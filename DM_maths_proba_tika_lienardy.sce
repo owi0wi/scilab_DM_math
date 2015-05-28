@@ -21,6 +21,9 @@ endfunction
 
 function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
+    //borneInf et borneSup representent l'intervalle des nombres aléatoire
+    //nbClasses est le nombre de classes que l'on souhaite avoir. Le decoupage se fait de maniere automatique
+    resultChi2pour5=[]
     classes=zeros(1,nbClasses)
     pas=(borneSup-borneInf)/nbClasses;
     
@@ -59,5 +62,3 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
     end
 endfunction
 
-
- //Boussa

@@ -1,4 +1,4 @@
-
+//
 function nombres=genererNombreLoiUniforme(N,graine,init)
     //Matrice colonne contenant nos N nombres de la loi uniforme
     nombres=zeros(1,N);

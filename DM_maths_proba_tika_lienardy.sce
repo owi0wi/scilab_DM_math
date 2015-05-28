@@ -60,3 +60,4 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
 endfunction
 
 
+ //Boussa

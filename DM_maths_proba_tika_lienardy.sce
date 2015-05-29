@@ -8,8 +8,8 @@ function nombres=genLoiPoisson(N,lambda)
     nombres=grand(1,N,"poi",lambda)
 endfunction
 
-function nombres=genLoiNormale(N,m,e)
-    nombres=grand(1,N,"nor",m,e)
+function nombres=genLoiNormale(N,m,sigma)
+    nombres=grand(1,N,"nor",m,sigma)
 endfunction
 
 function nombres=genRandLoiUniform(N)
@@ -56,6 +56,45 @@ function plotLoiPoisson()
     plot(genLoiPoisson(10000,10))
     subplot(4,3,12)
     plot(genLoiPoisson(10000,100))
+
+endfunction
+
+function plotLoiNormale()
+    subplot(441)
+    plot(genLoiNormale(10,10,1))
+    subplot(442)
+    plot(genLoiNormale(10,10,10))
+    subplot(443)
+    plot(genLoiNormale(10,100,1))
+    subplot(444)
+    plot(genLoiNormale(10,100,10))
+    
+    subplot(445)
+    plot(genLoiNormale(100,10,1))
+    subplot(446)
+    plot(genLoiNormale(100,10,10))
+    subplot(447)
+    plot(genLoiNormale(100,100,1))
+    subplot(448)
+    plot(genLoiNormale(100,100,10))
+    
+    subplot(449)
+    plot(genLoiNormale(1000,10,1))
+    subplot(4,4,10)
+    plot(genLoiNormale(1000,10,10))
+    subplot(4,4,11)
+    plot(genLoiNormale(1000,100,1))
+    subplot(4,4,12)
+    plot(genLoiNormale(1000,100,10))
+    
+    subplot(4,4,13)
+    plot(genLoiNormale(10000,10,1))
+    subplot(4,4,14)
+    plot(genLoiNormale(10000,10,10))
+    subplot(4,4,15)
+    plot(genLoiNormale(10000,100,1))
+    subplot(4,4,16)
+    plot(genLoiNormale(10000,100,10))
 
 endfunction
 

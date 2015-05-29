@@ -1,34 +1,69 @@
 
-function nombres=genererNombreLoiUniformeSur_0_1(N)
+function nombres=genLoiUniform(N)
     //Matrice colonne contenant nos N nombres de la loi uniforme
     nombres=grand(1,N,"unf",0,1)
 endfunction
 
-function nombres=genererRandUniform(N)
+function nombres=genLoiPoisson(N,lambda)
+    nombres=grand(1,N,"poi",lambda)
+endfunction
+
+function nombres=genLoiNormale(N,m,e)
+    nombres=grand(1,N,"nor",m,e)
+endfunction
+
+function nombres=genRandLoiUniform(N)
     nombres=rand(1,N)
 endfunction
 
-function representerGraphiquementLaLoiUniform()
-    X1=genererNombreLoiUniformeSur_0_1(10)
-    X2=genererNombreLoiUniformeSur_0_1(100)
-    X3=genererNombreLoiUniformeSur_0_1(1000)
-    X4=genererNombreLoiUniformeSur_0_1(10000)
-    
+function plotLoiUniform()
     subplot(221)
-    plot(X1)
+    plot(genLoiUniform(10))
     subplot(222)
-    plot(X2)
+    plot(genLoiUniform(100))
     subplot(223)
-    plot(X3)
+    plot(genLoiUniform(1000))
     subplot(224)
-    plot(X4)
+    plot(genLoiUniform(10000))
 endfunction
 
-function representerHistogrammeLoiUniform()
-    X1=genererNombreLoiUniformeSur_0_1(10)
-    X2=genererNombreLoiUniformeSur_0_1(100)
-    X3=genererNombreLoiUniformeSur_0_1(1000)
-    X4=genererNombreLoiUniformeSur_0_1(10000)
+
+function plotLoiPoisson()
+    subplot(431)
+    plot(genLoiPoisson(10,1))
+    subplot(432)
+    plot(genLoiPoisson(10,10))
+    subplot(433)
+    plot(genLoiPoisson(10,100))
+    
+    subplot(434)
+    plot(genLoiPoisson(100,1))
+    subplot(435)
+    plot(genLoiPoisson(100,10))
+    subplot(436)
+    plot(genLoiPoisson(100,100))
+    
+    subplot(437)
+    plot(genLoiPoisson(1000,1))
+    subplot(438)
+    plot(genLoiPoisson(1000,10))
+    subplot(439)
+    plot(genLoiPoisson(1000,100))
+    
+    subplot(4,3,10)
+    plot(genLoiPoisson(10000,1))
+    subplot(4,3,11)
+    plot(genLoiPoisson(10000,10))
+    subplot(4,3,12)
+    plot(genLoiPoisson(10000,100))
+
+endfunction
+
+function histplotLoiUniform()
+    X1=genLoiUniform(10)
+    X2=genLoiUniform(100)
+    X3=genLoiUniform(1000)
+    X4=genLoiUniform(10000)
 
     subplot(221)
     histplot([0:0.1:1],X1);

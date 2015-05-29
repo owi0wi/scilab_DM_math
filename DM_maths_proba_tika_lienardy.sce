@@ -23,7 +23,9 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
     //borneInf et borneSup representent l'intervalle des nombres aléatoire
     //nbClasses est le nombre de classes que l'on souhaite avoir. Le decoupage se fait de maniere automatique
-    resultChi2pour5=[]
+    
+    //contient les valeurs  du chi2 pour un seuil a 5% (de 1 a 14)
+    resultChi2_5=[3.841 5.991 7.815 9.488 11.07 12.592 14.067 15.507 16.919 18.307 19.675 21.026 22.362 23.685]
     classes=zeros(1,nbClasses)
     pas=(borneSup-borneInf)/nbClasses;
     
@@ -53,9 +55,10 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
         D2=D2+(classes(1,i)-size(nombres,2)*p(1,i))^2 / (size(nombres,2)*p(1,i))
     end
     
-    //a ecrire en dur
-    seuil=123;
-    if D2<seuil then
+    disp('D2 : ',D2)
+    disp('Valeur du seuil : ',resultChi2_5(nbClasses-1))
+    
+    if D2<resultChi2_5(nbClasses-1) then
         boolean='true';
     else
         boolean='false';

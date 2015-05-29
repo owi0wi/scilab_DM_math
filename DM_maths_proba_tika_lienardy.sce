@@ -21,14 +21,10 @@ function b=testChi2PourLoiPoisson(N, lambda, nbClasses)
     mini=int(min(nombres));
     maxi=int(max(nombres))+1;
     p=zeros(1,nbClasses);
-    moy=mean(nombres)
-    for i=0:nbClasses-1
-        p(1,i+1)=exp(-moy)*(moy^i)/factorial(i)
-    end
-    b=testChi2(nombres,p,mini,maxi,nbClasses)
+    b=testChi2(nombres,'poi',mini,maxi,nbClasses)
 endfunction
 
-function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
+function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
     //borneInf et borneSup representent l'intervalle des nombres aléatoire
     //nbClasses est le nombre de classes que l'on souhaite avoir. Le decoupage se fait de maniere automatique
@@ -54,13 +50,24 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
         end
     end
     disp(classes)
-    disp(p)
     
     //calcul de la distance D²
     D2 = 0;
-    if size(p,2)==1 then
-        p=ones(1,nbClasses)*p;
+    if loi=='uni' then
+        p=ones(1,nbClasses)*(1/nbClasses);
     end
+    if loi=='poi' then
+        p=zeros(1,nbClasses);
+        moy=0;
+        for i=1:nbClasses
+            moy=moy+classes(1,i)*i
+        end
+        moy=moy/size(nombres,2);
+        for k=1:nbClasses
+            p(1,k)=exp(-moy)*(moy.^k)/factorial(k);
+        end
+    end
+    disp(p)
 
     
     for i=1:nbClasses

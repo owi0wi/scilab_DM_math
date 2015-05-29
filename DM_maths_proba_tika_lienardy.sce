@@ -16,13 +16,19 @@ function nombres=genRandLoiUniform(N)
     nombres=rand(1,N)
 endfunction
 
-function b=testChi2PourLoiPoisson(N, lambda, nbClasses)
+function b=testChi2LoiPoisson(N, lambda, nbClasses)
     nombres=genLoiPoisson(N,lambda);
     mini=int(min(nombres));
     maxi=int(max(nombres))+1;
-    p=zeros(1,nbClasses);
     b=testChi2(nombres,'poi',mini,maxi,nbClasses)
 endfunction
+
+//function b=testChi2LoiNormale(N, m, sigma)
+//    nombres=genLoiNormale(N,m, sigma);
+//    mini=int(min(nombres));
+//    maxi=int(max(nombres))+1;
+//    b=testChi2(nombres,'nor',mini,maxi,nbClasses)
+//endfunction
 
 function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
@@ -63,9 +69,13 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
             moy=moy+classes(1,i)*i
         end
         moy=moy/size(nombres,2);
+        disp(moy)
         for k=1:nbClasses
             p(1,k)=exp(-moy)*(moy.^k)/factorial(k);
         end
+    end
+    if loi=='nor' then
+        
     end
     disp(p)
 

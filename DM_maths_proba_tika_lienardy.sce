@@ -4,6 +4,42 @@ function nombres=genererNombreLoiUniformeSur_0_1(N)
     nombres=grand(1,N,"unf",0,1)
 endfunction
 
+function nombres=genererRandUniform(N)
+    nombres=rand(1,N)
+endfunction
+
+function representerGraphiquementLaLoiUniform()
+    X1=genererNombreLoiUniformeSur_0_1(10)
+    X2=genererNombreLoiUniformeSur_0_1(100)
+    X3=genererNombreLoiUniformeSur_0_1(1000)
+    X4=genererNombreLoiUniformeSur_0_1(10000)
+    
+    subplot(221)
+    plot(X1)
+    subplot(222)
+    plot(X2)
+    subplot(223)
+    plot(X3)
+    subplot(224)
+    plot(X4)
+endfunction
+
+function representerHistogrammeLoiUniform()
+    X1=genererNombreLoiUniformeSur_0_1(10)
+    X2=genererNombreLoiUniformeSur_0_1(100)
+    X3=genererNombreLoiUniformeSur_0_1(1000)
+    X4=genererNombreLoiUniformeSur_0_1(10000)
+
+    subplot(221)
+    histplot([0:0.1:1],X1);
+    subplot(222)
+    histplot([0:0.1:1],X2);
+    subplot(223)
+    histplot([0:0.1:1],X3);
+    subplot(224)
+    histplot([0:0.1:1],X4);
+endfunction
+
 
 
 function boolean=testChi2(nombres, borneInf, borneSup, nbClasses)

@@ -1,25 +1,12 @@
 
-function nombres=genererNombreLoiUniforme(N,graine,init)
+function nombres=genererNombreLoiUniformeSur_0_1(N)
     //Matrice colonne contenant nos N nombres de la loi uniforme
-    nombres=zeros(1,N);
-    nombres(1,1)=init;
-    if graine ==0 then
-        graine=123456;
-    end
-    m=(2^31)-1;
-    
-    for i=1:(N-1)
-        nombres(1,i+1)=modulo(graine*nombres(1,i),m);
-    end
-    
-    for i=1:N
-        nombres(1,i)=nombres(1,i)/max(nombres);
-    end
+    nombres=grand(1,N,"unf",0,1)
 endfunction
 
 
 
-function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
+function boolean=testChi2(nombres, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
     //borneInf et borneSup representent l'intervalle des nombres aléatoire
     //nbClasses est le nombre de classes que l'on souhaite avoir. Le decoupage se fait de maniere automatique
@@ -44,15 +31,14 @@ function boolean=testChi2(nombres, p, borneInf, borneSup, nbClasses)
             end
         end
     end
+    disp(classes)
     
     //calcul de la distance D²
     D2 = 0;
-    if size(p,2)==1 then
-        p=ones(1,nbClasses)*p;
-    end
+    p=1/nbClasses;
     
     for i=1:nbClasses
-        D2=D2+(classes(1,i)-size(nombres,2)*p(1,i))^2 / (size(nombres,2)*p(1,i))
+        D2=D2+((classes(1,i)-size(nombres,2)*p)^2) / (size(nombres,2)*p)
     end
     
     disp('D2 : ',D2)

@@ -94,6 +94,37 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     end
 endfunction
 
+function X=marcheAlea1D(s,T,n)
+    //Avec s la longueur du deplacement pour un lancé
+    //Avec T la periode en seconde du lancé de piece
+    //Avec n le nombre de lancé
+    
+    //--> pile = 0 = a gauche
+    //--> face = 1 = a droite
+    clf;
+    X=[0]
+    for i=1:n
+        val=lancePiece();
+        if val==0 then
+            X=[X X(i)+s];
+        else
+            X=[X X(i)-s];
+        end
+        
+        disp(X(i));
+        //sleep(T*1000);
+    end
+    temps=[0:T:n*T];
+    plot(temps,X);
+    xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
+    
+endfunction
+
+function val=lancePiece()
+    val=grand(1,1,"bin",1,0.5)
+    val=round(val);
+endfunction
+
 
 function plotLoiUniform()
     subplot(221)

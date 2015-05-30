@@ -101,7 +101,7 @@ function X=marcheAlea1D(s,T,n)
     
     //--> pile = 0 = a gauche
     //--> face = 1 = a droite
-    clf;
+    //clf;
     X=[0]
     for i=1:n
         val=lancePiece();
@@ -111,12 +111,94 @@ function X=marcheAlea1D(s,T,n)
             X=[X X(i)-s];
         end
         
-        disp(X(i));
+        //disp(X(i));
+        //sleep(T*1000);
+    end
+    //temps=[0:T:n*T];
+    //plot(temps,X);
+    //xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
+    
+endfunction
+
+function [X,Z]=marcheAlea2D(s,T,n)
+    //Avec s la longueur du deplacement pour un lancé
+    //Avec T la periode en seconde du lancé de piece
+    //Avec n le nombre de lancé
+    
+    //--> pileX = 0 = a gauche
+    //--> faceX = 1 = a droite
+    //--> pileZ = 0 = en haut
+    //--> faceZ = 1 = en bas
+
+    X=[0];
+    Z=[0];
+    for i=1:n
+        valX=lancePiece();
+        valZ=lancePiece();
+        if valX==0 then
+            X=[X X(i)+s];
+        else
+            X=[X X(i)-s];
+        end
+        if valZ==0 then
+            Z=[Z Z(i)+s];
+        else
+            Z=[Z Z(i)-s];
+        end
+        
+        //disp(X(i));
         //sleep(T*1000);
     end
     temps=[0:T:n*T];
-    plot(temps,X);
-    xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
+    afficheMarche2D(temps,X,Z);
+    //param3d(temps,X,Z);
+    //plot3d(temps,temps,[Z' X'])
+    //xtitle("X(nT,omega)","Temps (s)","Distance parcourue (gauche/droite)","Distance parcourue (haut/bas)");
+    
+endfunction
+
+function afficheMarche2D(axeX,axeY,axeZ)
+    subplot(131)
+    param3d(axeX,axeY,axeZ);
+    xtitle("Z(nT,omega)","Temps (s)","Distance parcourue (gauche/droite)","Distance parcourue (haut/bas)");
+    subplot(132)
+    plot(axeX,axeY);
+    xtitle("Z(nT,omega)","Temps (s)","Distance parcourue (gauche/droite)");
+    subplot(133)
+    plot(axeX,axeZ);
+    xtitle("Z(nT,omega)","Temps (s)","Distance parcourue (haut/bas)");
+endfunction
+
+function marcheAleaRapide(n)
+    T=1;temps=[0:T:n*T];
+    subplot(331)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.1;temps=[0:T:n*T];
+    subplot(332)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.01;temps=[0:T:n*T];
+    subplot(333)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.001;temps=[0:T:n*T];
+    subplot(334)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.0001;temps=[0:T:n*T];
+    subplot(335)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.00001;temps=[0:T:n*T];
+    subplot(336)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.000001;temps=[0:T:n*T];
+    subplot(337)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.0000001;temps=[0:T:n*T];
+    subplot(338)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    T=0.00000001;temps=[0:T:n*T];
+    subplot(339)
+    plot(temps,marcheAlea1D(sqrt(T),T,n))
+    
+    
     
 endfunction
 

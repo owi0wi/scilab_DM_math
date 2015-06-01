@@ -1,21 +1,44 @@
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+//--------------------   DM maths - probabilité   -------------------------
+//-----------------   Lienardy Morgan - Tika Jihade   ---------------------
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
 
+//Ce fichier scilab contient l'ensemble du code pour le DM
+
+disp("- Exercice 1)");
+disp("-- Partie 1");
+disp("--- 1)");
+
+
+
+//Genere N nombres de loi uniforme entre 0 et 1
 function nombres=genLoiUniform(N)
     //Matrice colonne contenant nos N nombres de la loi uniforme
     nombres=grand(1,N,"unf",0,1)
 endfunction
+//-------------------------------------------------------------------------
 
+//Genere N nombres de loi de Poisson avec comme parametre lambda
 function nombres=genLoiPoisson(N,lambda)
     nombres=grand(1,N,"poi",lambda)
 endfunction
+//-------------------------------------------------------------------------
 
+//Genere N nombres de loi Normale avec comme parametres l'esperance 'm' et l'ecart type 'sigma'
 function nombres=genLoiNormale(N,m,sigma)
     nombres=grand(1,N,"nor",m,sigma)
 endfunction
+//-------------------------------------------------------------------------
 
+//Genere N nombres suivant la fonction scilab 'rand'
 function nombres=genRandLoiUniform(N)
     nombres=rand(1,N)
 endfunction
+//-------------------------------------------------------------------------
 
+//
 function b=testChi2LoiPoisson(N, lambda, nbClasses)
     nombres=genLoiPoisson(N,lambda);
     mini=int(min(nombres));

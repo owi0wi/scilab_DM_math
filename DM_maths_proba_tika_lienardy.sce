@@ -38,21 +38,31 @@ function nombres=genRandLoiUniform(N)
 endfunction
 //-------------------------------------------------------------------------
 
-//
+//Realise le test du Chi2 pour la loi de Poisson avec N nombres (param lambda))
+//nbClasses represente le nombre de classes que l'on souhaite avoir pour le test
+//l'intervalle est [ plus petite valeur obtenue ; plus grande valeur obtenue+1 ]
 function b=testChi2LoiPoisson(N, lambda, nbClasses)
     nombres=genLoiPoisson(N,lambda);
     mini=int(min(nombres));
     maxi=int(max(nombres))+1;
     b=testChi2(nombres,'poi',mini,maxi,nbClasses)
 endfunction
+//-------------------------------------------------------------------------
 
+//Realise le test du Chi2 pour la loi Normale avec N nombres (param m, sigma)
 //function b=testChi2LoiNormale(N, m, sigma)
 //    nombres=genLoiNormale(N,m, sigma);
 //    mini=int(min(nombres));
 //    maxi=int(max(nombres))+1;
 //    b=testChi2(nombres,'nor',mini,maxi,nbClasses)
 //endfunction
+//-------------------------------------------------------------------------
 
+//Realise le test du Chi2
+//nombres : la matrice contenant des nombres que l'on souhaite tester
+// loi : La loi que ces nombres suivent
+//borneInf et borneSup : les bornes pour le decoupage des classes
+//nbClasses : Le nombres de classes que l'on souhaite avoir
 function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
     //borneInf et borneSup representent l'intervalle des nombres aléatoire

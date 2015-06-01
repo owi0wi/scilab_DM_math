@@ -21,13 +21,46 @@ histplotLoiUniform();
 disp("--- 3)");
 N=genLoiUniform(1000)
 b=testChi2(N, 'uni', 0, 1, 10)
-disp("Test chi2 pour 100 nombres de loi uniforme avec 10 classes")
+disp("Test chi2 pour 1000 nombres de loi uniforme avec 10 classes")
 disp(b);
 disp("--- 4)");
 N=genRandLoiUniform(1000)
 b=testChi2(N, 'uni', 0, 1, 10)
-disp("Test chi2 pour 100 nombres de la fonction rand avec 10 classes")
+disp("Test chi2 pour 1000 nombres de la fonction rand avec 10 classes")
 disp(b);
+disp("--- 5)");
+//
+
+disp("-- Partie 2");
+disp("--- 6)");
+xset("window",2);
+plotLoiPoisson();
+xset("window",3);
+plotLoiNormale()
+disp("--- 7)");
+b=testChi2LoiPoisson(1000, 10, 10)
+disp("Test chi2 pour 1000 nombres de loi Poisson avec 10 classes")
+disp(b);
+disp("-- Partie 3");
+disp("--- 8)");
+
+disp("- Exercice 2)");
+disp("-- Partie 1");
+disp("--- 1)");
+//Loi Xi
+disp("--- 2)");
+//Loi X
+disp("--- 3)");
+xset("window",4);
+[X,Z]=marcheAlea2D(1,1,20)
+xset("window",5);
+[X,Z]=marcheAlea2D(1,1,100)
+xset("window",6);
+[X,Z]=marcheAlea2D(1,1,1000)
+disp("--- 4)");
+//Esperance et variance : 
+disp("-- Partie 2");
+disp("--- 5)");
 
 //-------------------------------------------------------------------------
 //--------------------------   Fonctions   --------------------------------
@@ -295,12 +328,12 @@ function plotLoiPoisson()
     subplot(431)
     plot(genLoiPoisson(10,1))
     subplot(432)
+    xtitle("12 graphes pour la loi de Poisson pour n=10,100,1000,10000 et lambda=1,10,100");
     plot(genLoiPoisson(10,10))
     subplot(433)
     plot(genLoiPoisson(10,100))
     
     subplot(434)
-    xtitle("12 graphes pour la loi de Poisson pour n=10,100,1000,10000 et lambda=1,10,100");
     plot(genLoiPoisson(100,1))
     subplot(435)
     plot(genLoiPoisson(100,10))

@@ -253,7 +253,7 @@ function val=lancePiece()
 endfunction
 //-------------------------------------------------------------------------
 
-
+//Affiche 4 graphes pour la loi uniforme pour 10,100,1000 et 10000 nombres
 function plotLoiUniform()
     subplot(221)
     plot(genLoiUniform(10))
@@ -264,8 +264,10 @@ function plotLoiUniform()
     subplot(224)
     plot(genLoiUniform(10000))
 endfunction
+//-------------------------------------------------------------------------
 
-
+//Affiche 12 graphes pour la loi de Poisson pour 10,100,1000 et 10000 nombres
+// et pour lambda 1, 10 et 100
 function plotLoiPoisson()
     subplot(431)
     plot(genLoiPoisson(10,1))
@@ -294,9 +296,11 @@ function plotLoiPoisson()
     plot(genLoiPoisson(10000,10))
     subplot(4,3,12)
     plot(genLoiPoisson(10000,100))
-
 endfunction
+//-------------------------------------------------------------------------
 
+//Affiche 16 graphes pour la loi de Normale pour 10,100,1000 et 10000 nombres,
+// pour une esperance a 10 et 100 et pour un ecart-type a 1 et 10
 function plotLoiNormale()
     subplot(441)
     plot(genLoiNormale(10,10,1))
@@ -335,7 +339,9 @@ function plotLoiNormale()
     plot(genLoiNormale(10000,100,10))
 
 endfunction
+//-------------------------------------------------------------------------
 
+//Affiche 4 histogrammes pour la loi uniforme pour 10,100,1000 et 10000 nombres
 function histplotLoiUniform()
     X1=genLoiUniform(10)
     X2=genLoiUniform(100)
@@ -351,3 +357,4 @@ function histplotLoiUniform()
     subplot(224)
     histplot([0:0.1:1],X4);
 endfunction
+//-------------------------------------------------------------------------

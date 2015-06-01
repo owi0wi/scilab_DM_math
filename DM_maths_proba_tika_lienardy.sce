@@ -52,15 +52,27 @@ disp("--- 2)");
 //Loi X
 disp("--- 3)");
 xset("window",4);
-[X,Z]=marcheAlea2D(1,1,20)
+[X,Z]=marcheAlea2D(1,1,20);
 xset("window",5);
-[X,Z]=marcheAlea2D(1,1,100)
+[X,Z]=marcheAlea2D(1,1,100);
 xset("window",6);
-[X,Z]=marcheAlea2D(1,1,1000)
+[X,Z]=marcheAlea2D(1,1,1000);
 disp("--- 4)");
 //Esperance et variance : 
 disp("-- Partie 2");
 disp("--- 5)");
+//pourquoi s²=a.T
+disp("--- 6)");
+xset("window",7);
+marcheAleaRapide(1000);
+disp("--- 7");
+//mouvement brownien
+disp("-- Partie 3");
+disp("--- 8)");
+xset("window",8);
+[X,Z]=marcheAlea2D(s,T,n);
+
+
 
 //-------------------------------------------------------------------------
 //--------------------------   Fonctions   --------------------------------
@@ -207,9 +219,8 @@ function X=marcheAlea1D(s,T,n)
         //disp(X(i));
         //sleep(T*1000);
     end
-    //temps=[0:T:n*T];
-    //plot(temps,X);
-    //xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
+    temps=[0:T:n*T];
+    afficheMarche1D(temps,X);
     
 endfunction
 //-------------------------------------------------------------------------
@@ -251,6 +262,13 @@ function [X,Z]=marcheAlea2D(s,T,n)
     //param3d(temps,X,Z);
     //plot3d(temps,temps,[Z' X'])
     //xtitle("X(nT,omega)","Temps (s)","Distance parcourue (gauche/droite)","Distance parcourue (haut/bas)");
+endfunction
+//-------------------------------------------------------------------------
+
+//Affiche 3 graphes : le 1er en 3d, les 2 derniers en 2d
+function afficheMarche1D(axeX,axeY)
+    plot(axeX,axeY);
+    xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
 endfunction
 //-------------------------------------------------------------------------
 

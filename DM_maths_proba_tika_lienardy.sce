@@ -7,70 +7,7 @@ xdel(winsid());
 //-------------------------------------------------------------------------
 //-------------------------------------------------------------------------
 
-//Ce fichier scilab contient l'ensemble du code pour le DM
-disp("- Exercice 1)");
-disp("-- Partie 1");
-disp("--- 1)");
-disp("Test pour N=10");
-disp(genLoiUniform(10));
-xset("window",0);
-plotLoiUniform();
-disp("--- 2)");
-xset("window",1);
-histplotLoiUniform();
-disp("--- 3)");
-N=genLoiUniform(1000)
-b=testChi2(N, 'uni', 0, 1, 10)
-disp("Test chi2 pour 1000 nombres de loi uniforme avec 10 classes")
-disp(b);
-disp("--- 4)");
-N=genRandLoiUniform(1000)
-b=testChi2(N, 'uni', 0, 1, 10)
-disp("Test chi2 pour 1000 nombres de la fonction rand avec 10 classes")
-disp(b);
-disp("--- 5)");
-//
 
-disp("-- Partie 2");
-disp("--- 6)");
-xset("window",2);
-plotLoiPoisson();
-xset("window",3);
-plotLoiNormale()
-disp("--- 7)");
-b=testChi2LoiPoisson(1000, 10, 10)
-disp("Test chi2 pour 1000 nombres de loi Poisson avec 10 classes")
-disp(b);
-disp("-- Partie 3");
-disp("--- 8)");
-
-disp("- Exercice 2)");
-disp("-- Partie 1");
-disp("--- 1)");
-//Loi Xi
-disp("--- 2)");
-//Loi X
-disp("--- 3)");
-xset("window",4);
-[X,Z]=marcheAlea2D(1,1,20);
-xset("window",5);
-[X,Z]=marcheAlea2D(1,1,100);
-xset("window",6);
-[X,Z]=marcheAlea2D(1,1,1000);
-disp("--- 4)");
-//Esperance et variance : 
-disp("-- Partie 2");
-disp("--- 5)");
-//pourquoi s²=a.T
-disp("--- 6)");
-xset("window",7);
-marcheAleaRapide(1000);
-disp("--- 7");
-//mouvement brownien
-disp("-- Partie 3");
-disp("--- 8)");
-xset("window",8);
-[X,Z]=marcheAlea2D(s,T,n);
 
 
 
@@ -435,3 +372,71 @@ function histplotLoiUniform()
     
 endfunction
 //-------------------------------------------------------------------------
+
+
+
+
+//Ce fichier scilab contient l'ensemble du code pour le DM
+disp("- Exercice 1)");
+disp("-- Partie 1");
+disp("--- 1)");
+disp("Test pour N=10");
+disp(genLoiUniform(10));
+xset("window",0);
+plotLoiUniform();
+disp("--- 2)");
+xset("window",1);
+histplotLoiUniform();
+disp("--- 3)");
+N=genLoiUniform(1000)
+b=testChi2(N, 'uni', 0, 1, 10)
+disp("Test chi2 pour 1000 nombres de loi uniforme avec 10 classes")
+disp(b);
+disp("--- 4)");
+N=genRandLoiUniform(1000)
+b=testChi2(N, 'uni', 0, 1, 10)
+disp("Test chi2 pour 1000 nombres de la fonction rand avec 10 classes")
+disp(b);
+disp("--- 5)");
+//
+
+disp("-- Partie 2");
+disp("--- 6)");
+xset("window",2);
+plotLoiPoisson();
+xset("window",3);
+plotLoiNormale()
+disp("--- 7)");
+b=testChi2LoiPoisson(1000, 10, 10)
+disp("Test chi2 pour 1000 nombres de loi Poisson avec 10 classes")
+disp(b);
+disp("-- Partie 3");
+disp("--- 8)");
+
+disp("- Exercice 2)");
+disp("-- Partie 1");
+disp("--- 1)");
+//Loi Xi
+disp("--- 2)");
+//Loi X
+disp("--- 3)");
+xset("window",4);
+[X,Z]=marcheAlea2D(1,1,20);
+xset("window",5);
+[X,Z]=marcheAlea2D(1,1,100);
+xset("window",6);
+[X,Z]=marcheAlea2D(1,1,1000);
+disp("--- 4)");
+//Esperance et variance : 
+disp("-- Partie 2");
+disp("--- 5)");
+//pourquoi s²=a.T
+disp("--- 6)");
+xset("window",7);
+marcheAleaRapide(1000);
+disp("--- 7");
+//mouvement brownien
+disp("-- Partie 3");
+disp("--- 8)");
+xset("window",8);
+[X,Z]=marcheAlea2D(s,T,n);

@@ -70,7 +70,7 @@ disp("--- 7");
 disp("-- Partie 3");
 disp("--- 8)");
 xset("window",8);
-[X,Z]=marcheAlea2D(s,T,n);
+[X,Z]=marcheAlea2D(1,1,1000);
 
 
 

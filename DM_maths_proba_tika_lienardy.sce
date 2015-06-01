@@ -12,8 +12,17 @@ disp("-- Partie 1");
 disp("--- 1)");
 disp("Test pour N=10");
 disp(genLoiUniform(10));
-histplotLoiUniform();
+plotLoiUniform();
 xset("window",1);
+disp("--- 2)");
+histplotLoiUniform();
+disp("--- 3)");
+
+
+//-------------------------------------------------------------------------
+//--------------------------   Fonctions   --------------------------------
+//-------------------------------------------------------------------------
+
 
 //Genere N nombres de loi uniforme entre 0 et 1
 function nombres=genLoiUniform(N)
@@ -224,6 +233,7 @@ function marcheAleaRapide(n)
     plot(temps,marcheAlea1D(sqrt(T),T,n))
     T=0.1;temps=[0:T:n*T];
     subplot(332)
+    xtitle("9 graphes pour la marche aleatoire rapide");
     plot(temps,marcheAlea1D(sqrt(T),T,n))
     T=0.01;temps=[0:T:n*T];
     subplot(333)
@@ -258,6 +268,7 @@ endfunction
 //Affiche 4 graphes pour la loi uniforme pour 10,100,1000 et 10000 nombres
 function plotLoiUniform()
     subplot(221)
+    xtitle("4 graphes pour la loi uniforme pour n=10,100,1000 ,10000");
     plot(genLoiUniform(10))
     subplot(222)
     plot(genLoiUniform(100))
@@ -279,6 +290,7 @@ function plotLoiPoisson()
     plot(genLoiPoisson(10,100))
     
     subplot(434)
+    xtitle("12 graphes pour la loi de Poisson pour n=10,100,1000,10000 et lambda=1,10,100");
     plot(genLoiPoisson(100,1))
     subplot(435)
     plot(genLoiPoisson(100,10))
@@ -307,6 +319,7 @@ function plotLoiNormale()
     subplot(441)
     plot(genLoiNormale(10,10,1))
     subplot(442)
+    xtitle("16 graphes pour la loi de Normale pour n=10,100,1000,10000 m=10,100 sigma=1,10");
     plot(genLoiNormale(10,10,10))
     subplot(443)
     plot(genLoiNormale(10,100,1))

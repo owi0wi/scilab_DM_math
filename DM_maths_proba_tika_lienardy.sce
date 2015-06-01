@@ -1,3 +1,5 @@
+funcprot(0)
+xdel(winsid());
 //-------------------------------------------------------------------------
 //-------------------------------------------------------------------------
 //--------------------   DM maths - probabilité   -------------------------
@@ -6,18 +8,26 @@
 //-------------------------------------------------------------------------
 
 //Ce fichier scilab contient l'ensemble du code pour le DM
-
 disp("- Exercice 1)");
 disp("-- Partie 1");
 disp("--- 1)");
 disp("Test pour N=10");
 disp(genLoiUniform(10));
+xset("window",0);
 plotLoiUniform();
-xset("window",1);
 disp("--- 2)");
+xset("window",1);
 histplotLoiUniform();
 disp("--- 3)");
-
+N=genLoiUniform(1000)
+b=testChi2(N, 'uni', 0, 1, 10)
+disp("Test chi2 pour 100 nombres de loi uniforme avec 10 classes")
+disp(b);
+disp("--- 4)");
+N=genRandLoiUniform(1000)
+b=testChi2(N, 'uni', 0, 1, 10)
+disp("Test chi2 pour 100 nombres de la fonction rand avec 10 classes")
+disp(b);
 
 //-------------------------------------------------------------------------
 //--------------------------   Fonctions   --------------------------------

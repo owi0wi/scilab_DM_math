@@ -10,8 +10,10 @@
 disp("- Exercice 1)");
 disp("-- Partie 1");
 disp("--- 1)");
-
-
+disp("Test pour N=10");
+disp(genLoiUniform(10));
+histplotLoiUniform();
+xset("window",1);
 
 //Genere N nombres de loi uniforme entre 0 et 1
 function nombres=genLoiUniform(N)
@@ -347,7 +349,7 @@ function histplotLoiUniform()
     X2=genLoiUniform(100)
     X3=genLoiUniform(1000)
     X4=genLoiUniform(10000)
-
+    xtitle("4 histogrammes pour la loi uniforme n=10,100,1000,10000");
     subplot(221)
     histplot([0:0.1:1],X1);
     subplot(222)
@@ -356,5 +358,6 @@ function histplotLoiUniform()
     histplot([0:0.1:1],X3);
     subplot(224)
     histplot([0:0.1:1],X4);
+    
 endfunction
 //-------------------------------------------------------------------------

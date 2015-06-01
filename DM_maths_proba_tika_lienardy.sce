@@ -64,7 +64,7 @@ endfunction
 //borneInf et borneSup : les bornes pour le decoupage des classes
 //nbClasses : Le nombres de classes que l'on souhaite avoir
 function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
-    //p doit avoir 'nbClasses' colonnes ou 1 si équiproba
+    //p doit avoir 'nbClasses' colonnes
     //borneInf et borneSup representent l'intervalle des nombres aléatoire
     //nbClasses est le nombre de classes que l'on souhaite avoir. Le decoupage se fait de maniere automatique
     
@@ -73,6 +73,7 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     classes=zeros(1,nbClasses)
     pas=(borneSup-borneInf)/nbClasses;
     
+    //ces boucles permettent de decouper les nombres en classes
     for i=1:size(nombres,2)
         for b=0:nbClasses-1
             if b~=nbClasses-1 then
@@ -92,6 +93,7 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     
     //calcul de la distance D²
     D2 = 0;
+    //Ici on determine 'p' en fonction de la loi
     if loi=='uni' then
         p=ones(1,nbClasses)*(1/nbClasses);
     end
@@ -112,7 +114,7 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     end
     disp(p)
 
-    
+    // On somme les distances de chaque classe
     for i=1:nbClasses
         D2=D2+((classes(1,i)-size(nombres,2)*p(1,i))^2) / (size(nombres,2)*p(1,i))
     end
@@ -120,12 +122,15 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
     disp('D2 : ',D2)
     disp('Valeur du seuil : ',resultChi2_5(nbClasses-1))
     
+    //on compare D² et la valeur du seuil (rappel : 5%)
     if D2<resultChi2_5(nbClasses-1) then
-        boolean='true';
+        boolean="L hypothese initiale est valide, donc on l a garde";
     else
-        boolean='false';
+        boolean='On observe un evenement qui ne peut se produire que rarement, on rejette donc l hypothese initiale';
     end
 endfunction
+//-------------------------------------------------------------------------
+
 
 function X=marcheAlea1D(s,T,n)
     //Avec s la longueur du deplacement pour un lancé

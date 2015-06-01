@@ -131,7 +131,8 @@ function boolean=testChi2(nombres, loi, borneInf, borneSup, nbClasses)
 endfunction
 //-------------------------------------------------------------------------
 
-
+//Exercice2 - fonction qui prend en parametre une distance 's', une periode (en sec)'T' et le nombre de mouvement 'n'
+// Simule une marche aleatoire dans 2 sens : gauche ou droite d'une distance 's' qui se repete toutes les T secondes 'n' fois
 function X=marcheAlea1D(s,T,n)
     //Avec s la longueur du deplacement pour un lancé
     //Avec T la periode en seconde du lancé de piece
@@ -157,7 +158,11 @@ function X=marcheAlea1D(s,T,n)
     //xtitle("X(nT,omega)","Temps (s)","Distance parcourue");
     
 endfunction
+//-------------------------------------------------------------------------
 
+//Fonction qui prend en parametre une distance 's', une periode (en sec)'T' et le nombre de mouvement 'n'
+// Simule une marche aleatoire dans 4 sens : gauche ou droite, et haut ou bas d'une
+// distance 's' qui se repete toutes les T secondes 'n' fois
 function [X,Z]=marcheAlea2D(s,T,n)
     //Avec s la longueur du deplacement pour un lancé
     //Avec T la periode en seconde du lancé de piece
@@ -192,9 +197,10 @@ function [X,Z]=marcheAlea2D(s,T,n)
     //param3d(temps,X,Z);
     //plot3d(temps,temps,[Z' X'])
     //xtitle("X(nT,omega)","Temps (s)","Distance parcourue (gauche/droite)","Distance parcourue (haut/bas)");
-    
 endfunction
+//-------------------------------------------------------------------------
 
+//Affiche 3 graphes : le 1er en 3d, les 2 derniers en 2d
 function afficheMarche2D(axeX,axeY,axeZ)
     subplot(131)
     param3d(axeX,axeY,axeZ);
@@ -206,7 +212,10 @@ function afficheMarche2D(axeX,axeY,axeZ)
     plot(axeX,axeZ);
     xtitle("Z(nT,omega)","Temps (s)","Distance parcourue (haut/bas)");
 endfunction
+//-------------------------------------------------------------------------
 
+//Affiche 9 graphes avec comme param 'n' qui qui represente le nombre de mouvements
+//On prend T de plus en plus petit en commencant a 1, et en divisant a chaque fois par 10
 function marcheAleaRapide(n)
     T=1;temps=[0:T:n*T];
     subplot(331)
@@ -235,15 +244,14 @@ function marcheAleaRapide(n)
     T=0.00000001;temps=[0:T:n*T];
     subplot(339)
     plot(temps,marcheAlea1D(sqrt(T),T,n))
-    
-    
-    
 endfunction
+//-------------------------------------------------------------------------
 
+//Simule un lancer de piece en suivant le loi de bernoulli (loi binomiale pour n=1 et p=0.5)
 function val=lancePiece()
     val=grand(1,1,"bin",1,0.5)
-    val=round(val);
 endfunction
+//-------------------------------------------------------------------------
 
 
 function plotLoiUniform()
